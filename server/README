@@ -1,0 +1,3 @@
+#Formatting Code
+docker-compose build
+docker-compose run lifeapp jsfmt file_name.js -w
