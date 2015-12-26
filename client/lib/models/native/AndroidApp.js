@@ -1,4 +1,3 @@
-var BaseAppState = require('../App');
+var BaseAppState = require('../common');
 
-module.exports = BaseAppState.extend({
-});
+module.exports = BaseAppState.extend({});
