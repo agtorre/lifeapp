@@ -4,5 +4,5 @@ lifeapp:
         - "3000:3000"
     volumes:
         - ".:/app"
-    command: node app.js
+    command: bash -c "npm install && npm start"
 
