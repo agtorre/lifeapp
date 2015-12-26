@@ -1,0 +1,22 @@
+{
+  "name": "lifeapp",
+  "version": "0.0.1",
+  "description": "Life App Hackathon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agtorre/lifeapp.git"
+  },
+  "author": "agtorre and mikerjacobi",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/agtorre/lifeapp/issues"
+  },
+  "homepage": "https://github.com/agtorre/lifeapp#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
