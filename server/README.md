@@ -16,7 +16,7 @@ docker-compose run lifeapp jsfmt file_name.js -w
 
 #query example
 ```
-curl -X POST -H "Content-Type: application/json" --data @data.json "http://lothsoft.com:3000/graphql"
+curl -X POST -H "Content-Type: application/json" --data @data.json "http://localhost:3000/graphql"
 ```
 
 for query @data.json contains:
