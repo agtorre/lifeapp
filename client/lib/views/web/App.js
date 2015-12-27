@@ -1,10 +1,10 @@
 "use strict"
-var React = require("react");
+var ReactWeb = require("react");
 var models = require("../../models/common");
 
-class App extends React.Component {
+class App extends ReactWeb.Component {
     render(){
-        var data = models.Data.x;
+        var data = JSON.stringify(models.Data.movieData);
         return (
             <div>
                 hello web: {data}
@@ -13,4 +13,3 @@ class App extends React.Component {
     }
 }
 exports.App = App;
-

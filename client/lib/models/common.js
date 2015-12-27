@@ -1,7 +1,9 @@
 'use strict';
 
 var Data = {
-    x: 5
+    movieData: [
+      {title: 'abcd', year: '2015', posters: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}},
+    ]
 };
 
 exports.Data = Data;
