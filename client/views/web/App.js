@@ -4,7 +4,7 @@ var models = require("../../models/common");
 
 class App extends React.Component {
     render(){
-        var data = models.Data.x;
+        var data = JSON.stringify(models.Data.movieData);
         return (
             <div>
                 hello web: {data}
