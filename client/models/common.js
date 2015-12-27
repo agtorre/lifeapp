@@ -2,7 +2,7 @@
 
 var Data = {
     movieData: [
-      {title: 'abcd', year: '2015', posters: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}},
+      {title: 'abc', year: '2015', posters: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}},
     ]
 };
 

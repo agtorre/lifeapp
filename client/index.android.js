@@ -1,10 +1,5 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
 'use strict';
 
-var Data = require('./models/common').Data;
 var React = require('react-native');
 var {
   AppRegistry,
@@ -14,29 +9,35 @@ var {
   View,
 } = React;
 
-var LifeAppAndroid = React.createClass({
-  render: function() {
-    var movie = Data.movieData[0];
-    return (
-      <View style={styles.container}>
-        <Text>{movie.title}</Text>
-        <Text>{movie.year}</Text>
-        <Image source={{uri: movie.posters.thumbnail}} style={styles.thumbnail} />
-      </View>
-    );
-  }
-});
+var Redux = require("redux");
+//var render = require("react-dom").render;
+var thunkMiddleware = require("redux-thunk");
+var loggerMiddleware = require("redux-logger")();
+var Provider = require("react-redux/native").Provider;
 
-var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  thumbnail: {
-    width: 53,
-    height: 81,
-  },
-});
-AppRegistry.registerComponent('LifeAppAndroid', () => LifeAppAndroid);
+var Root = require("./lib/reducers/rootReducer").Root;
+
+// components
+var LifeAppAndroid = require("./lib/components/android/indexComponent").LifeAppAndroid;
+
+
+const createStoreWithMiddleware = Redux.applyMiddleware(
+    thunkMiddleware,
+    loggerMiddleware
+)(Redux.createStore);
+
+var initialState = {};
+var store = createStoreWithMiddleware(Root, initialState);
+
+class App extends React.Component {
+    componentDidMount(){}
+    render() {
+        return (
+            <Provider store={store}>
+                {() => <LifeAppAndroid />}
+            </Provider>
+        )
+    }
+}
+
+AppRegistry.registerComponent('LifeAppAndroid', () => App);

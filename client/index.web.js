@@ -1,4 +1,3 @@
-var React = require('react');
 var App = require('./views/web/App').App;
 var render = require("react-dom").render;
 
