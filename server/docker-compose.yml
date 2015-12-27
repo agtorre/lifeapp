@@ -8,6 +8,6 @@ lifeapp:
     links:
         - db
 db:
-    image: rethinkdb
+    image: mongo
     ports:
         - "8080:8080"

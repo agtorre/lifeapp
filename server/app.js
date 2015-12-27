@@ -12,11 +12,13 @@ var app = express();
 
 //graphql test
 var graphqlHTTP = require('express-graphql');
-var gql = require('./graphql/schema');
+
+import {cardGraphQLSchema} from './graphql/schema';
 
 
-//var db = require('rethinkdb');
-//var connection = require('./models/connection');
+//db
+var mongoose = require('mongoose')
+mongoose.connect('mongodb://db/lifeapp')
 
 
 // view engine setup
@@ -33,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/graphql', graphqlHTTP({schema: gql, graphiql: true}));
+app.use('/graphql', graphqlHTTP({schema: cardGraphQLSchema, graphiql: true}));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
