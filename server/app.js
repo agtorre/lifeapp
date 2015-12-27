@@ -13,7 +13,11 @@ var app = express();
 //graphql test
 var graphqlHTTP = require('express-graphql');
 var gql = require('./graphql/schema');
-//graphql test
+
+
+//var db = require('rethinkdb');
+//var connection = require('./models/connection');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

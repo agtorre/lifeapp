@@ -1,4 +1,4 @@
-FROM node:4.0
+FROM node:5.3
 
 WORKDIR /app
 RUN npm install express -g

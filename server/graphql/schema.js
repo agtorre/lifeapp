@@ -1,6 +1,5 @@
 var graphql = require('graphql');
 
-
 var hello = 'hello';
 var world = 'world';
 
