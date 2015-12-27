@@ -4,6 +4,7 @@
  */
 'use strict';
 
+var Data = require('./models/common').Data;
 var React = require('react-native');
 var {
   AppRegistry,
@@ -13,13 +14,9 @@ var {
   View,
 } = React;
 
-var MOCKED_MOVIES_DATA = [
-  {title: 'Title123', year: '2015', posters: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}},
-];
-
 var LifeAppAndroid = React.createClass({
   render: function() {
-    var movie = MOCKED_MOVIES_DATA[0];
+    var movie = Data.movieData[0];
     return (
       <View style={styles.container}>
         <Text>{movie.title}</Text>
