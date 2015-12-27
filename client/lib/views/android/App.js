@@ -1,12 +1,14 @@
 var React = require("react-native");
+var { ListView, Text, TextInput, View, TouchableHighlight } = React;
 
 class App extends React.Component {
     appStateClass: require('../../models/native/AndroidApp'),
     render(){
         return (
-            <div>
-                hello android
-            </div>
+            <View style={styles.appContainer}>
+                <Text>hello android</Text>
+            </View>
+
         )
     }
 }
