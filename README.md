@@ -19,3 +19,4 @@ DEV:
 * as JS files are modified, from client/LifeAppAndroid
 ** curl "http://localhost:8081/index.android.bundle?platform=android" -o "android/app/src/main/assets/index.android.bundle
 ** note: this requires react-native server to be running
+
