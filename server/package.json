@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Life App Hackathon",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "babel-node --presets es2015 ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -16,12 +16,16 @@
   },
   "homepage": "https://github.com/agtorre/lifeapp#readme",
   "dependencies": {
+    "babel-preset-es2015": "^6.3.13",
     "body-parser": "~1.13.2",
     "cookie-parser": "~1.3.5",
     "debug": "~2.2.0",
     "express": "~4.13.1",
+    "express-graphql": "^0.4.5",
+    "graphql": "^0.4.14",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
+    "rethinkdb": "^2.2.1",
     "serve-favicon": "~2.3.0"
   }
 }

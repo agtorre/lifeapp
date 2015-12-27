@@ -10,6 +10,15 @@ var users = require('./routes/users');
 
 var app = express();
 
+//graphql test
+var graphqlHTTP = require('express-graphql');
+var gql = require('./graphql/schema');
+
+
+//var db = require('rethinkdb');
+//var connection = require('./models/connection');
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -24,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/graphql', graphqlHTTP({schema: gql, graphiql: true}));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

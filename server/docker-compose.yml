@@ -5,4 +5,9 @@ lifeapp:
     volumes:
         - ".:/app"
     command: bash -c "npm install && npm start"
-
+    links:
+        - db
+db:
+    image: rethinkdb
+    ports:
+        - "8080:8080"
