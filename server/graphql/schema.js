@@ -2,60 +2,70 @@ import {
     graphql,
     GraphQLSchema,
     GraphQLObjectType,
-    GraphQLString
+    GraphQLString,
+    GraphQLInt,
+    GraphQLNonNull
 } from 'graphql';
+
+
+import {getCard, setCard} from '../models/card';
 
 
 var hello = 'hello';
 var world = 'world';
 
-var schema = new GraphQLSchema({
-  query: new GraphQLObjectType({
-    name: 'RootQueryType',
-    fields: {
-      hello: {
-        type: GraphQLString,
-        resolve() {
-          return hello;
-        }
-      },
-      world: {
-        type: GraphQLString,
-        resolve() {
-          return world;
-        }
-      }
-    }
-  }),
-  mutation: new GraphQLObjectType({
-    name: 'RootMutationType',
-    fields:{
-        hello:{
-            type: GraphQLString,
-            args: {
-                NewHello:{
-                    type: GraphQLString,
-                }
-            },
-            resolve: function(obj, {NewHello}){
-                hello = NewHello
-                return hello
-            }
+
+var cardInterface = new GraphQLObjectType({
+    name: 'Card',
+    fields: () => ({
+        name: {
+            type: new GraphQLNonNull(GraphQLString),
+            description: "Name of the card",
         },
-        world:{
+        points_type: {
             type: GraphQLString,
-            args: {
-                NewWorld:{
-                    type: GraphQLString,
-                }
-            },
-            resolve: function(obj, {NewWorld}){
-                world = NewWorld
-                return world
-            }
-        }
-    }
-  }),
+            description: "Types of points to record",
+        },
+        points: {
+            type: GraphQLInt,
+            description: "Point Value",
+        },
+    }),
 });
 
-module.exports = schema;
+
+var cardQuery = new GraphQLObjectType({
+    name: 'CardQueryType',
+    fields: () => ({
+      card:{
+          type: cardInterface,
+          args:{
+              name:{ type: GraphQLString }
+          },
+          resolve: (obj, {name}) => getCard(name)
+      }
+    })
+});
+
+
+var cardMutate = new GraphQLObjectType({
+    name: 'CardMutationType',
+    fields: () => ({
+      card:{
+          type: cardInterface,
+          args:{
+              name:{ type: GraphQLString },
+              points_type:{ type: GraphQLString },
+              points:{ type: GraphQLInt },
+          },
+          resolve: (obj, {name, points_type, points}) => setCard(name, points_type, points),
+      },
+    })
+});
+
+
+
+export var cardGraphQLSchema = new GraphQLSchema({
+  query: cardQuery,
+  mutation: cardMutate
+});
