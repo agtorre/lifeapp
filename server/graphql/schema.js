@@ -1,50 +1,56 @@
-var graphql = require('graphql');
+import {
+    graphql,
+    GraphQLSchema,
+    GraphQLObjectType,
+    GraphQLString
+} from 'graphql';
+
 
 var hello = 'hello';
 var world = 'world';
 
-var schema = new graphql.GraphQLSchema({
-  query: new graphql.GraphQLObjectType({
+var schema = new GraphQLSchema({
+  query: new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
       hello: {
-        type: graphql.GraphQLString,
+        type: GraphQLString,
         resolve() {
           return hello;
         }
       },
       world: {
-        type: graphql.GraphQLString,
+        type: GraphQLString,
         resolve() {
           return world;
         }
       }
     }
   }),
-  mutation: new graphql.GraphQLObjectType({
+  mutation: new GraphQLObjectType({
     name: 'RootMutationType',
     fields:{
         hello:{
-            type: graphql.GraphQLString,
+            type: GraphQLString,
             args: {
                 NewHello:{
-                    type: graphql.GraphQLString,
+                    type: GraphQLString,
                 }
             },
-            resolve: function(obj, value){
-                hello = value.NewHello
+            resolve: function(obj, {NewHello}){
+                hello = NewHello
                 return hello
             }
         },
         world:{
-            type: graphql.GraphQLString,
+            type: GraphQLString,
             args: {
                 NewWorld:{
-                    type: graphql.GraphQLString,
+                    type: GraphQLString,
                 }
             },
-            resolve: function(obj, value){
-                world = value.NewWorld
+            resolve: function(obj, {NewWorld}){
+                world = NewWorld
                 return world
             }
         }
